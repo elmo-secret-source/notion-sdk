@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Brd6\NotionSdkPhp\Resource\RichText;
 
 use Brd6\NotionSdkPhp\Resource\Annotations;
+use Brd6\NotionSdkPhp\Resource\Link;
 use Brd6\NotionSdkPhp\Resource\Property\TextProperty;
 
 class Text extends AbstractRichText
@@ -23,6 +24,20 @@ class Text extends AbstractRichText
         $text->annotations = new Annotations();
 
         return $text->setText((new TextProperty())->setContent($content));
+    }
+
+    public static function fromContentLink(string $content, string $link): self
+    {
+        $text = new self();
+        $text->annotations = new Annotations();
+
+        $textProperty = (new TextProperty())
+            ->setContent($content)
+            ->setLink((new Link())->setUrl($link)->setType('url'));
+
+        $text->setText($textProperty);
+
+        return $text;
     }
 
     protected function initialize(): void
