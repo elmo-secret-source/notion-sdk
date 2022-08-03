@@ -1,5 +1,5 @@
 {
-    "name": "brd6/notion-sdk-php",
+    "name": "elmo-secret-source/notion-sdk",
     "description": "Notion SDK for PHP",
     "license": "MIT",
     "type": "library",
