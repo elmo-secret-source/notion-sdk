@@ -8,8 +8,8 @@ use DateTimeImmutable;
 
 class DateProperty extends AbstractProperty
 {
-    protected ?DateTimeImmutable $start = null;
-    protected ?DateTimeImmutable $end = null;
+    protected ?string $start = null;
+    protected ?string $end = null;
     protected ?string $timeZone = null;
 
     public static function fromRawData(array $rawData): self
@@ -17,10 +17,10 @@ class DateProperty extends AbstractProperty
         $property = new self();
 
         $property->start = isset($rawData['start']) ?
-            new DateTimeImmutable((string) $rawData['start']) :
+            $rawData['start'] :
             null;
         $property->end = isset($rawData['end']) ?
-            new DateTimeImmutable((string) $rawData['end']) :
+            $rawData['end'] :
             null;
         $property->timeZone = isset($rawData['time_zone']) ? (string) $rawData['time_zone'] : null;
 
