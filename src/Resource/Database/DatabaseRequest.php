@@ -10,6 +10,7 @@ class DatabaseRequest extends AbstractJsonSerializable
 {
     protected array $filter = [];
     protected array $sorts = [];
+    protected ? string $startCursor = null;
 
     public function getFilter(): array
     {
@@ -31,6 +32,18 @@ class DatabaseRequest extends AbstractJsonSerializable
     public function setSorts(array $sorts): self
     {
         $this->sorts = $sorts;
+
+        return $this;
+    }
+
+    public function getStartCursor(): string
+    {
+        return $this->startCursor;
+    }
+
+    public function setStartCursor(string $startCursor): self
+    {
+        $this->startCursor = $startCursor;
 
         return $this;
     }
